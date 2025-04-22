@@ -31,4 +31,14 @@ public class PassengerTest {
     void testTitleFail(){
         assertThrows(IllegalArgumentException.class, () -> {new Passenger("Dr","Micheal", "O'Leary");});
     }
+
+    @Test
+    void testShortFirstName(){
+       Exception ex =  assertThrows(IllegalArgumentException.class, () -> {new Passenger("Mr","Mi", "O'Leary");});
+        assertEquals("Invalid first name length", ex.getMessage());
+    }
+
+
+
 }
+
