@@ -1,7 +1,10 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PassengerTest {
     Passenger myPass;
@@ -18,4 +21,14 @@ public class PassengerTest {
         assertEquals("O'Leary", myPass.getLastName());
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"Mr","Mrs","Ms"})
+    void testTilteSuccess(String title){
+        Passenger myPass2 = new Passenger(title , "Micheal", "0'Leary");
+    }
+
+    @Test
+    void testTitleFail(){
+        assertThrows(IllegalArgumentException.class, () -> {new Passenger("Dr","Micheal", "O'Leary");});
+    }
 }
