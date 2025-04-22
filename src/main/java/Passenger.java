@@ -9,6 +9,9 @@ public class Passenger {
         if(!title.equals("Mr") && !title.equals("Mrs")&& !title.equals("Ms")){
             throw new IllegalArgumentException("Invalid Passanger Title");
         }
+        if(firstName == null || firstName.length() <3){
+            throw new IllegalArgumentException("Invalid first name length");
+        }
         this.title = title;
         this.firstName = firstName;
         this. lastName = lastName;
